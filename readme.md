@@ -55,7 +55,7 @@ The trained model is evaluated on a validation set, and the best-performing mode
 
 ## Streamlit App
 
-A Streamlit application has been developed to facilitate the deployment of the model and enable predictions on new MRI images. The app can be accessed [here](https://st.brainmri.com).
+A Streamlit application has been developed to facilitate the deployment of the model and enable predictions on new MRI images. The app can be accessed [here](https://brain-tumor-classification.streamlit.app/).
 
 ### Functionality:
 
