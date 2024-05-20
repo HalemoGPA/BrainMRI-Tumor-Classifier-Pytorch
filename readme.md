@@ -74,7 +74,11 @@ streamlit run app.py
 ```
 ## Project Demo
 
-placeholder
+
+
+https://github.com/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch/assets/73307941/ed102d41-6084-4b88-ab92-07e532481ea9
+
+
 
 ## Usage
 1. **Clone the repository**:
