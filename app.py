@@ -2,8 +2,8 @@ import streamlit as st
 from PIL import Image
 import torch
 from torchvision import transforms
-from model import MyModel, load_model
-from utils import predict
+from src.model import MyModel, load_model
+from src.utils import predict
 
 # Load the trained model
 device = "cuda" if torch.cuda.is_available() else "cpu"
