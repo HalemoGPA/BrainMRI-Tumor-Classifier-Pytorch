@@ -7,7 +7,7 @@ from utils import predict
 
 # Load the trained model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model_path = 'saved_model/model_38'
+model_path = 'saved_models/model_38'
 model = load_model(model_path, device)
 
 # Define the transformation
