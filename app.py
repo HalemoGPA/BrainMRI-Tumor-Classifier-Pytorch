@@ -20,15 +20,7 @@ transform = transforms.Compose(
     ]
 )
 
-
-@st.cache_data
-def preprocess_image(image):
-    preprocessed_image = transform(image).unsqueeze(0)
-    return preprocessed_image
-
-
-# Streamlit app
-st.title("Brain Tumor Classification")
+# map labels from int to string
 label_dict = {
     0: "No Tumor",
     1: "Pituitary",
@@ -36,6 +28,51 @@ label_dict = {
     3: "Meningioma",
     4: "Other",
 }
+
+# process image got from user before passing to the model
+def preprocess_image(image):
+    preprocessed_image = transform(image).unsqueeze(0)
+    return preprocessed_image
+
+# sample image loader
+@st.cache_data
+def load_sample_images(sample_images_dir):
+    sample_image_files = os.listdir(sample_images_dir)
+    sample_images = []
+    for sample_image_file in sample_image_files:
+        sample_image_path = os.path.join(sample_images_dir, sample_image_file)
+        sample_image = Image.open(sample_image_path).convert("RGB")
+        sample_image = sample_image.resize((150, 150))  # Resize to a fixed size
+        sample_images.append((sample_image_file, sample_image))
+    return sample_images
+
+# Streamlit app
+st.title("Brain Tumor Classification")
+
+
+# Display sample images section
+st.subheader("Sample Images")
+st.write(
+    "Here are some sample images. Your uploaded image should be similar to these for best results."
+)
+
+sample_images_dir = "sample"
+sample_images = load_sample_images(sample_images_dir)
+
+# Create a grid layout for sample images
+num_cols = 3  # Number of columns in the grid
+cols = st.columns(num_cols)
+
+for i, (sample_image_file, sample_image) in enumerate(sample_images):
+    col_idx = i % num_cols
+    with cols[col_idx]:
+        st.image(sample_image, caption=f"Sample {i+1}", use_column_width=True)
+
+
+st.write("Upload an image below to classify it.")
+
+
+# image from user
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
 if uploaded_file is not None:
