@@ -1,6 +1,8 @@
 
 # Brain Tumor Classification
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub issues](https://img.shields.io/github/issues/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
 
 This repository contains a deep learning-based solution for classifying brain tumors using MRI images. The model is trained to classify images into four categories: No Tumor, Pituitary, Glioma, Meningioma
 
@@ -36,10 +38,6 @@ The dataset used is the Brain Tumor MRI Dataset available on Kaggle. It contains
 - Seaborn
 - Streamlit
 
-Install the required packages using:
-```sh
-pip install -r requirements.txt
-```
 
 ## Training
 The training script preprocesses the images, defines the model architecture, and trains the model.
@@ -75,8 +73,8 @@ streamlit run app.py
 ## Usage
 1. **Clone the repository**:
 ```sh
-git clone https://github.com/yourusername/brain-tumor-classification.git
-cd brain-tumor-classification
+git clone https://github.com/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch.git
+cd BrainMRI-Tumor-Classifier-Pytorch
 ```
 2. **Install dependencies**:
 ```sh
