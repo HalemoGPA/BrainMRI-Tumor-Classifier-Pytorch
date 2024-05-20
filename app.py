@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from PIL import Image
 import torch
@@ -7,7 +8,7 @@ from src.utils import predict
 
 # Load the trained model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model_path = "models\model_38"
+model_path = os.path.join("models", "model_38")
 model = load_model(model_path, device)
 
 # Define the transformation
