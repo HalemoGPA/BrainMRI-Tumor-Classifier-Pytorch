@@ -21,7 +21,13 @@ transform = transforms.Compose(
 
 # Streamlit app
 st.title("Brain Tumor Classification")
-
+label_dict = {
+    0: "No Tumor",
+    1: "Pituitary",
+    2: "Glioma",
+    3: "Meningioma",
+    4: "Other",
+}
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
 if uploaded_file is not None:
@@ -34,11 +40,7 @@ if uploaded_file is not None:
     # Make prediction
     predicted_class = predict(model, image, device)
 
-    label_dict = {
-        0: "No Tumor",
-        1: "Pituitary",
-        2: "Glioma",
-        3: "Meningioma",
-        4: "Other",
-    }
-    st.write(f"<h1 style='font-size: 48px;'>Prediction: {label_dict[predicted_class]}</h1>", unsafe_allow_html=True)
+    st.write(
+        f"<h1 style='font-size: 48px;'>Prediction: {label_dict[predicted_class]}</h1>",
+        unsafe_allow_html=True,
+    )
