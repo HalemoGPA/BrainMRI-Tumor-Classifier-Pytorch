@@ -1,7 +1,8 @@
 
 # Brain Tumor Classification
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository contains a deep learning-based solution for classifying brain tumors using MRI images. The model is trained to classify images into five categories: No Tumor, Pituitary, Glioma, Meningioma, and Other.
+This repository contains a deep learning-based solution for classifying brain tumors using MRI images. The model is trained to classify images into four categories: No Tumor, Pituitary, Glioma, Meningioma
 
 ## Table of Contents
 - [Brain Tumor Classification](#brain-tumor-classification)
@@ -12,11 +13,10 @@ This repository contains a deep learning-based solution for classifying brain tu
   - [Training](#training)
   - [Evaluation](#evaluation)
   - [Streamlit App](#streamlit-app)
+    - [Functionality:](#functionality)
   - [Usage](#usage)
   - [Results](#results)
   - [Acknowledgments](#acknowledgments)
-  - [License](#license)
-  - [Next Steps:](#next-steps)
 
 ## Overview
 This project uses a Convolutional Neural Network (CNN) implemented in PyTorch to classify brain MRI images. The model architecture consists of multiple convolutional, batch normalization, max-pooling layers followed by fully connected layers.
@@ -24,7 +24,7 @@ This project uses a Convolutional Neural Network (CNN) implemented in PyTorch to
 ## Dataset
 The dataset used is the Brain Tumor MRI Dataset available on Kaggle. It contains MRI images for training and testing the model.
 
-- [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection)
+- [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
 
 ## Requirements
 - Python 3.x
@@ -48,25 +48,24 @@ The training script preprocesses the images, defines the model architecture, and
 2. **Model Architecture:** Defined in `model.py`.
 3. **Training Loop:** Defined in the notebook with performance metrics.
 
-Run the training script:
-```sh
-python train.py
-```
+
 
 ## Evaluation
 The trained model is evaluated on a validation set, and the best-performing model is saved. The evaluation metrics include accuracy and loss.
 
-Run the evaluation script:
-```sh
-python evaluate.py
-```
+
 
 ## Streamlit App
-A Streamlit application is provided for deploying the model and making predictions on new MRI images.
 
-1. **Load the model**: The pre-trained model is loaded.
-2. **Upload Image**: Upload an MRI image to the app.
-3. **Prediction**: The app displays the predicted tumor type.
+A Streamlit application has been developed to facilitate the deployment of the model and enable predictions on new MRI images. The app can be accessed [here](https://st.brainmri.com).
+
+### Functionality:
+
+1. **Model Loading**: The pre-trained model is loaded automatically upon accessing the app.
+2. **Image Upload**: Users can upload MRI images directly to the app interface.
+3. **Prediction Display**: Once an image is uploaded, the app displays the predicted tumor type based on the model's classification.
+
+The Streamlit app provides a user-friendly interface for interacting with the model and obtaining predictions effortlessly.
 
 Run the Streamlit app:
 ```sh
@@ -83,47 +82,18 @@ cd brain-tumor-classification
 ```sh
 pip install -r requirements.txt
 ```
-3. **Train the model**:
-```sh
-python train.py
-```
-4. **Evaluate the model**:
-```sh
-python evaluate.py
-```
-5. **Run the Streamlit app**:
+
+3. **Run the Streamlit app**:
 ```sh
 streamlit run app.py
 ```
 
+
 ## Results
-The model's performance is visualized through training and validation loss and accuracy plots. Confusion matrices are also used to illustrate the classification performance on the test set.
+The model achieves an accuracy of 99.3% on the test set. Training and validation loss and accuracy plots are provided to visualize the model's performance. Confusion matrices illustrate the classification performance on the test set.
 
 ## Acknowledgments
-- The dataset is provided by [Navoneel Chakrabarty](https://www.kaggle.com/navoneel) on Kaggle.
+- The dataset is provided by [MASOUD NICKPARVAR](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) on Kaggle.
 - This project uses PyTorch for building and training the model.
 
-## License
-This project is licensed under the MIT License.
 
-
-## Next Steps:
-1. **Project Organization**: 
-    - Organize your repository with the following structure:
-      ```
-      brain-tumor-classification/
-      ├── data/
-      ├── models/
-      ├── notebooks/
-      ├── src/
-      │   ├── __init__.py
-      │   ├── dataset.py
-      │   ├── model.py
-      │   ├── train.py
-      │   ├── evaluate.py
-      │   ├── utils.py
-      ├── app.py
-      ├── requirements.txt
-      ├── README.md
-      └── .gitignore
-      ```
