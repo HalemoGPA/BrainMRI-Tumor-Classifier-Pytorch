@@ -18,6 +18,7 @@ This repository contains a deep learning-based solution for classifying brain tu
   - [Evaluation](#evaluation)
   - [Streamlit App](#streamlit-app)
     - [Functionality:](#functionality)
+  - [Project Demo](#project-demo)
   - [Usage](#usage)
   - [Results](#results)
   - [Acknowledgments](#acknowledgments)
@@ -71,6 +72,9 @@ Run the Streamlit app:
 ```sh
 streamlit run app.py
 ```
+## Project Demo
+
+placeholder
 
 ## Usage
 1. **Clone the repository**:
