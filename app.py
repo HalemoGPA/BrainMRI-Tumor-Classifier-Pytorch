@@ -19,6 +19,13 @@ transform = transforms.Compose(
     ]
 )
 
+
+@st.cache_data
+def preprocess_image(image):
+    preprocessed_image = transform(image).unsqueeze(0)
+    return preprocessed_image
+
+
 # Streamlit app
 st.title("Brain Tumor Classification")
 label_dict = {
@@ -35,10 +42,9 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     # Preprocess the image
-    image = transform(image).unsqueeze(0).to(device)
-
+    preprocessed_image = preprocess_image(image).to(device)
     # Make prediction
-    predicted_class = predict(model, image, device)
+    predicted_class = predict(model, preprocessed_image, device)
 
     st.write(
         f"<h1 style='font-size: 48px;'>Prediction: {label_dict[predicted_class]}</h1>",
