@@ -3,6 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub issues](https://img.shields.io/github/issues/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
+
 
 This repository contains a deep learning-based solution for classifying brain tumors using MRI images. The model is trained to classify images into four categories: No Tumor, Pituitary, Glioma, Meningioma
 
