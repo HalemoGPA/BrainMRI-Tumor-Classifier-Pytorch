@@ -22,6 +22,7 @@ This repository contains a deep learning-based solution for classifying brain tu
   - [Usage](#usage)
   - [Results](#results)
   - [Acknowledgments](#acknowledgments)
+  - [Kaggle Notebook](#kaggle-notebook)
 
 ## Overview
 This project uses a Convolutional Neural Network (CNN) implemented in PyTorch to classify brain MRI images. The model architecture consists of multiple convolutional, batch normalization, max-pooling layers followed by fully connected layers.
@@ -104,4 +105,5 @@ The model achieves an accuracy of 99.3% on the test set. Training and validation
 - The dataset is provided by [MASOUD NICKPARVAR](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) on Kaggle.
 - This project uses PyTorch for building and training the model.
 
-
+## Kaggle Notebook
+The model training and evaluation process is detailed in this [Kaggle Notebook](https://www.kaggle.com/code/halemogpa/brain-tumor-classification-pytorch-99-3-test).
