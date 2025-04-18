@@ -43,7 +43,7 @@ tbb==2021.12.0
 tenacity==8.3.0
 toml==0.10.2
 toolz==0.12.1
-torch==2.3.0
+torch==2.6.0
 torchvision==0.18.0
 tornado==6.4.2
 typing_extensions==4.11.0
