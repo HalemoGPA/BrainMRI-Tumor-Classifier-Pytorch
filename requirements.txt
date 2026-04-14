@@ -24,7 +24,7 @@ networkx==3.3
 numpy==1.26.4
 packaging==24.0
 pandas==2.2.2
-pillow==10.3.0
+pillow==12.2.0
 protobuf==5.29.6
 pyarrow==16.1.0
 pydeck==0.9.1
