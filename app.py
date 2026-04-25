@@ -312,13 +312,33 @@ def render_probability_bars(probs, top_idx: int) -> None:
     st.markdown("\n".join(rows), unsafe_allow_html=True)
 
 
+@st.cache_data(show_spinner="Analyzing scan…", max_entries=8)
+def _analyze(mri_bytes: bytes):
+    image = Image.open(BytesIO(mri_bytes)).convert("RGB")
+    model = get_model()
+    tensor = preprocess(image).to(DEVICE)
+    top_idx, probs = predict_with_probs(model, tensor, DEVICE)
+    target_layer = get_gradcam_target_layer(model)
+    heatmap = compute_gradcam(model, tensor, target_layer, top_idx, image)
+    return image, top_idx, probs, heatmap
+
+
+@st.cache_data(show_spinner=False, max_entries=8)
+def _build_pdf(mri_bytes: bytes, predicted_label: str, probabilities_tuple: tuple) -> bytes:
+    import numpy as np
+    image, _, _, heatmap = _analyze(mri_bytes)
+    return make_pdf_report(
+        original_image=image,
+        heatmap_image=heatmap,
+        predicted_label=predicted_label,
+        probabilities=np.asarray(probabilities_tuple),
+        model_version=MODEL_VERSION,
+    )
+
+
 def render_results(image: Image.Image) -> None:
-    with st.spinner("Analyzing scan…"):
-        model = get_model()
-        tensor = preprocess(image).to(DEVICE)
-        top_idx, probs = predict_with_probs(model, tensor, DEVICE)
-        target_layer = get_gradcam_target_layer(model)
-        heatmap = compute_gradcam(model, tensor, target_layer, top_idx, image)
+    mri_bytes = st.session_state["mri_bytes"]
+    image, top_idx, probs, heatmap = _analyze(mri_bytes)
 
     label = LABELS[top_idx]
     confidence = float(probs[top_idx])
@@ -371,13 +391,7 @@ def render_results(image: Image.Image) -> None:
             )
 
     render_step_title(3, "Download report")
-    pdf_bytes = make_pdf_report(
-        original_image=image,
-        heatmap_image=heatmap,
-        predicted_label=label,
-        probabilities=probs,
-        model_version=MODEL_VERSION,
-    )
+    pdf_bytes = _build_pdf(mri_bytes, label, tuple(float(p) for p in probs))
     cdl, cdr = st.columns([1, 3])
     with cdl:
         st.download_button(

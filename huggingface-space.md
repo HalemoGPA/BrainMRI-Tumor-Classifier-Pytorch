@@ -20,10 +20,23 @@ hf repos create <your-user>/brain-mri-tumor-classifier \
   --public
 ```
 
-(Or create it in the web UI at <https://huggingface.co/new-space> — pick
+(Or create it in the web UI at <https://huggingface.co/new-space> - pick
 **Docker** SDK.)
 
 ## Required `README.md` frontmatter
+
+> **Case sensitivity warning:** HF Spaces' git is case-sensitive and
+> recognizes only `README.md` (capital R) for metadata parsing. macOS's
+> case-insensitive filesystem treats `readme.md` and `README.md` as the
+> same file, but on the Space they are not. If `cardData` shows as `null`
+> in `hf spaces info`, your filename is the wrong case and the YAML
+> frontmatter is being ignored. Upload as `README.md`:
+>
+> ```bash
+> cp readme.md /tmp/README.md
+> hf upload <user>/brain-mri-tumor-classifier /tmp/README.md README.md \
+>   --repo-type space
+> ```
 
 Hugging Face Spaces parses YAML frontmatter at the top of `README.md`. Paste
 this block as the very first lines of the README **on the Space**
@@ -50,14 +63,14 @@ clean GitHub README; copy the block in only when pushing to the Space.
 
 Two equivalent ways:
 
-**Option A — git remote (recommended for ongoing updates):**
+**Option A - git remote (recommended for ongoing updates):**
 
 ```bash
 git remote add space https://huggingface.co/spaces/<your-user>/brain-mri-tumor-classifier
 git push space main
 ```
 
-**Option B — `hf upload` (one-shot full-folder upload):**
+**Option B - `hf upload` (one-shot full-folder upload):**
 
 ```bash
 hf upload <your-user>/brain-mri-tumor-classifier . . \
