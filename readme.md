@@ -42,8 +42,8 @@ PyTorch CNN, and explains every prediction with a **Grad-CAM** heatmap.
 
 | Platform | Link |
 |----------|------|
-| Hugging Face Spaces | <https://huggingface.co/spaces/Halemo/brain-mri-tumor-classifier> |
-| Streamlit Community Cloud | <https://brain-tumor-classification.streamlit.app/> |
+| Hugging Face Spaces | [huggingface.co/spaces/Halemo/brain-mri-tumor-classifier](https://huggingface.co/spaces/Halemo/brain-mri-tumor-classifier) |
+| Streamlit Community Cloud | [brain-tumor-classification.streamlit.app](https://brain-tumor-classification.streamlit.app/) |
 
 ## 🖼️ Screenshots
 
