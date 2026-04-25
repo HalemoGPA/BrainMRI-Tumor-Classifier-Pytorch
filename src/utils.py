@@ -17,6 +17,30 @@ LABELS = ["No Tumor", "Pituitary", "Glioma", "Meningioma"]
 NUM_DISPLAY_CLASSES = len(LABELS)
 
 
+def is_likely_mri(pil_image: Image.Image) -> tuple[bool, dict]:
+    """Heuristic check: brain MRIs are near-grayscale with dark backgrounds.
+
+    Returns (is_mri_like, diagnostics).
+    """
+    arr = np.asarray(pil_image.convert("RGB"), dtype=np.float32)
+    if arr.ndim != 3 or arr.shape[-1] != 3:
+        return False, {"reason": "not RGB"}
+    # Per-pixel saturation: how far the max channel is from the min channel.
+    chroma = arr.max(axis=-1) - arr.min(axis=-1)
+    mean_chroma = float(chroma.mean())
+    # Background darkness: real MRIs have a lot of near-black pixels.
+    luma = arr.mean(axis=-1)
+    dark_fraction = float((luma < 25).mean())
+    diagnostics = {
+        "mean_chroma": mean_chroma,
+        "dark_fraction": dark_fraction,
+    }
+    # Thresholds tuned empirically: real grayscale MRIs sit at chroma < 8,
+    # color logos / photos easily exceed 25. Background should cover >5% of image.
+    is_mri = mean_chroma < 15 and dark_fraction > 0.05
+    return is_mri, diagnostics
+
+
 def predict(model, image, device):
     model.eval()
     image = image.to(device)

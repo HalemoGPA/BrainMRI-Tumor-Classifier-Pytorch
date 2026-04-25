@@ -13,6 +13,7 @@ from src.model import get_gradcam_target_layer, load_model
 from src.utils import (
     LABELS,
     compute_gradcam,
+    is_likely_mri,
     make_pdf_report,
     predict_with_probs,
 )
@@ -40,7 +41,7 @@ st.set_page_config(
     menu_items={
         "Get Help": GITHUB_URL,
         "Report a bug": f"{GITHUB_URL}/issues",
-        "About": "Brain MRI Tumor Classifier — PyTorch CNN with Grad-CAM explainability.",
+        "About": "Brain MRI Tumor Classifier - PyTorch CNN with Grad-CAM explainability.",
     },
 )
 
@@ -82,6 +83,18 @@ header[data-testid="stHeader"] { background: transparent; }
   color: #fcd34d;
   margin-bottom: 18px;
 }
+
+.ood-banner {
+  background: rgba(239, 68, 68, 0.10);
+  border-left: 3px solid var(--bad);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: #fecaca;
+  margin: 8px 0 18px 0;
+  line-height: 1.5;
+}
+.ood-banner em { color: #fca5a5; font-style: normal; font-weight: 600; }
 
 .section-title {
   display: flex; align-items: center; gap: 10px;
@@ -313,6 +326,16 @@ def render_results(image: Image.Image) -> None:
 
     render_step_title(2, "Result")
 
+    is_mri, diag = is_likely_mri(image)
+    if not is_mri:
+        st.markdown(
+            '<div class="ood-banner">⚠️ <strong>This image does not look like a brain MRI.</strong> '
+            "The model was trained on grayscale MRI scans only and will still output "
+            "a confident-looking prediction for any image you give it. "
+            "Treat the result below as <em>not meaningful</em>.</div>",
+            unsafe_allow_html=True,
+        )
+
     col_pred, col_imgs = st.columns([1, 1.2], gap="large")
 
     with col_pred:
@@ -387,7 +410,7 @@ def main() -> None:
 
     st.markdown(
         '<div class="disclaimer-banner">⚠️ <strong>Educational and research use only</strong> '
-        "— this app is not a medical device. Do not use these predictions for "
+        "- this app is not a medical device. Do not use these predictions for "
         "diagnosis or treatment decisions.</div>",
         unsafe_allow_html=True,
     )

@@ -29,21 +29,21 @@ PyTorch CNN, and explains every prediction with a **Grad-CAM** heatmap.
 
 ## ✨ Features
 
-- 🎯 **4-class tumor classification** — No Tumor, Pituitary, Glioma, Meningioma
-- 🔥 **Grad-CAM heatmap overlay** — see which MRI regions the model focused on
-- 📊 **Per-class probability bar chart** — full confidence breakdown, not just the top label
-- 🖼️ **One-click sample images** — try the app instantly without finding your own MRI
-- 📄 **PDF report download** — original image, heatmap, prediction, probabilities, disclaimer
+- 🎯 **4-class tumor classification** - No Tumor, Pituitary, Glioma, Meningioma
+- 🔥 **Grad-CAM heatmap overlay** - see which MRI regions the model focused on
+- 📊 **Per-class probability bar chart** - full confidence breakdown, not just the top label
+- 🖼️ **One-click sample images** - try the app instantly without finding your own MRI
+- 📄 **PDF report download** - original image, heatmap, prediction, probabilities, disclaimer
 - 🌙 **Dark theme** out of the box
 - 🐳 **Dockerized** for reproducible deploys
-- 📦 **uv + `pyproject.toml`** — modern Python packaging, locked deps
+- 📦 **uv + `pyproject.toml`** - modern Python packaging, locked deps
 
 ## 🚀 Live demo
 
 | Platform | Link |
 |----------|------|
 | Hugging Face Spaces | <https://huggingface.co/spaces/Halemo/brain-mri-tumor-classifier> |
-| Streamlit Community Cloud | <!-- paste URL after deploying via https://share.streamlit.io --> |
+| Streamlit Community Cloud | <https://brain-tumor-classification.streamlit.app/> |
 
 ## 🖼️ Screenshots
 
