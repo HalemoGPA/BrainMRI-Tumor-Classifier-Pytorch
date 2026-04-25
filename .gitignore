@@ -11,3 +11,6 @@ brain-mri/
 docs/.tmp/
 .playwright-mcp/
 .env
+.env.*
+!.env.example
+.claude/

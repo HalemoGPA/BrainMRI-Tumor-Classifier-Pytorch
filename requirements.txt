@@ -78,6 +78,7 @@ numpy==1.26.4
     #   grad-cam
     #   matplotlib
     #   opencv-python
+    #   opencv-python-headless
     #   pandas
     #   pydeck
     #   scikit-learn
@@ -119,6 +120,8 @@ nvidia-nvtx-cu12==12.4.127 ; platform_machine == 'x86_64' and sys_platform == 'l
     # via torch
 opencv-python==4.11.0.86
     # via grad-cam
+opencv-python-headless==4.11.0.86
+    # via brain-mri-tumor-classifier
 packaging==26.2
     # via
     #   altair
