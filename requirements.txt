@@ -77,7 +77,6 @@ numpy==1.26.4
     #   contourpy
     #   grad-cam
     #   matplotlib
-    #   opencv-python
     #   opencv-python-headless
     #   pandas
     #   pydeck
@@ -118,8 +117,6 @@ nvidia-nvjitlink-cu12==12.4.127 ; platform_machine == 'x86_64' and sys_platform 
     #   torch
 nvidia-nvtx-cu12==12.4.127 ; platform_machine == 'x86_64' and sys_platform == 'linux'
     # via torch
-opencv-python==4.11.0.86
-    # via grad-cam
 opencv-python-headless==4.11.0.86
     # via brain-mri-tumor-classifier
 packaging==26.2
