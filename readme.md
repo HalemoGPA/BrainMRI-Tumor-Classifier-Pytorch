@@ -1,3 +1,15 @@
+---
+title: Brain MRI Tumor Classifier
+emoji: 🧠
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 8501
+pinned: false
+license: mit
+short_description: PyTorch CNN + Grad-CAM for brain-tumor MRI classification.
+---
+
 # 🧠 Brain MRI Tumor Classifier
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -30,8 +42,8 @@ PyTorch CNN, and explains every prediction with a **Grad-CAM** heatmap.
 
 | Platform | Link |
 |----------|------|
-| Hugging Face Spaces | <!-- TODO: paste URL after first deploy --> |
-| Streamlit Community Cloud | <!-- TODO: paste URL after first deploy --> |
+| Hugging Face Spaces | <https://huggingface.co/spaces/Halemo/brain-mri-tumor-classifier> |
+| Streamlit Community Cloud | <!-- paste URL after deploying via https://share.streamlit.io --> |
 
 ## 🖼️ Screenshots
 
