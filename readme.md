@@ -1,109 +1,127 @@
+# 🧠 Brain MRI Tumor Classifier
 
-# Brain Tumor Classification
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![GitHub issues](https://img.shields.io/github/issues/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
+[![Python](https://img.shields.io/badge/python-3.10--3.12-blue)](pyproject.toml)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.41-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.5-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org)
+[![uv](https://img.shields.io/badge/managed%20with-uv-261230?logo=python&logoColor=white)](https://docs.astral.sh/uv/)
 
+A polished, portfolio-grade Streamlit app that classifies brain MRI scans into
+**No Tumor**, **Pituitary**, **Glioma**, or **Meningioma** using a custom
+PyTorch CNN, and explains every prediction with a **Grad-CAM** heatmap.
 
-This repository contains a deep learning-based solution for classifying brain tumors using MRI images. The model is trained to classify images into four categories: No Tumor, Pituitary, Glioma, Meningioma
+> ⚠️ **For educational and research use only.** This app is not a medical
+> device. Do not use these predictions for diagnosis or treatment decisions.
 
-## Table of Contents
-- [Brain Tumor Classification](#brain-tumor-classification)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Dataset](#dataset)
-  - [Requirements](#requirements)
-  - [Training](#training)
-  - [Evaluation](#evaluation)
-  - [Streamlit App](#streamlit-app)
-    - [Functionality:](#functionality)
-  - [Project Demo](#project-demo)
-  - [Usage](#usage)
-  - [Results](#results)
-  - [Acknowledgments](#acknowledgments)
-  - [Kaggle Notebook](#kaggle-notebook)
+---
 
-## Overview
-This project uses a Convolutional Neural Network (CNN) implemented in PyTorch to classify brain MRI images. The model architecture consists of multiple convolutional, batch normalization, max-pooling layers followed by fully connected layers.
+## ✨ Features
 
-## Dataset
-The dataset used is the Brain Tumor MRI Dataset available on Kaggle. It contains MRI images for training and testing the model.
+- 🎯 **4-class tumor classification** — No Tumor, Pituitary, Glioma, Meningioma
+- 🔥 **Grad-CAM heatmap overlay** — see which MRI regions the model focused on
+- 📊 **Per-class probability bar chart** — full confidence breakdown, not just the top label
+- 🖼️ **One-click sample images** — try the app instantly without finding your own MRI
+- 📄 **PDF report download** — original image, heatmap, prediction, probabilities, disclaimer
+- 🌙 **Dark theme** out of the box
+- 🐳 **Dockerized** for reproducible deploys
+- 📦 **uv + `pyproject.toml`** — modern Python packaging, locked deps
 
-- [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+## 🚀 Live demo
 
-## Requirements
-- Python 3.x
-- PyTorch
-- Torchvision
-- NumPy
-- Scikit-learn
-- Matplotlib
-- Seaborn
-- Streamlit
+| Platform | Link |
+|----------|------|
+| Hugging Face Spaces | <!-- TODO: paste URL after first deploy --> |
+| Streamlit Community Cloud | <!-- TODO: paste URL after first deploy --> |
 
+## 🖼️ Screenshots
 
-## Training
-The training script preprocesses the images, defines the model architecture, and trains the model.
+> Capture these after your first run and commit them under `docs/`.
+> See [docs/SCREENSHOTS.md](docs/SCREENSHOTS.md) for the shot list.
 
-1. **Preprocessing:** Images are resized and normalized.
-2. **Model Architecture:** Defined in `model.py`.
-3. **Training Loop:** Defined in the notebook with performance metrics.
+| Main view | Grad-CAM result |
+|-----------|-----------------|
+| ![main](docs/screenshot.png) | ![heatmap](docs/heatmap.png) |
 
+## 🏃 Quickstart
 
+Requires [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
+(`brew install uv` on macOS).
 
-## Evaluation
-The trained model is evaluated on a validation set, and the best-performing model is saved. The evaluation metrics include accuracy and loss.
-
-
-
-## Streamlit App
-
-A Streamlit application has been developed to facilitate the deployment of the model and enable predictions on new MRI images. The app can be accessed [here](https://brain-tumor-classification.streamlit.app/).
-
-### Functionality:
-
-1. **Model Loading**: The pre-trained model is loaded automatically upon accessing the app.
-2. **Image Upload**: Users can upload MRI images directly to the app interface.
-3. **Prediction Display**: Once an image is uploaded, the app displays the predicted tumor type based on the model's classification.
-
-The Streamlit app provides a user-friendly interface for interacting with the model and obtaining predictions effortlessly.
-
-Run the Streamlit app:
-```sh
-streamlit run app.py
-```
-## Project Demo
-
-
-
-https://github.com/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch/assets/73307941/ed102d41-6084-4b88-ab92-07e532481ea9
-
-
-
-## Usage
-1. **Clone the repository**:
-```sh
+```bash
 git clone https://github.com/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch.git
 cd BrainMRI-Tumor-Classifier-Pytorch
-```
-2. **Install dependencies**:
-```sh
-pip install -r requirements.txt
+uv sync
+uv run streamlit run app.py
 ```
 
-3. **Run the Streamlit app**:
-```sh
-streamlit run app.py
+Open <http://localhost:8501> and either upload an MRI or click a sample.
+
+### Run with Docker
+
+```bash
+docker build -t brain-mri .
+docker run -p 8501:8501 brain-mri
 ```
 
+## 🧠 Model
 
-## Results
-The model achieves an accuracy of 99.3% on the test set. Training and validation loss and accuracy plots are provided to visualize the model's performance. Confusion matrices illustrate the classification performance on the test set.
+A compact CNN trained on the
+[Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset).
 
-## Acknowledgments
-- The dataset is provided by [MASOUD NICKPARVAR](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) on Kaggle.
-- This project uses PyTorch for building and training the model.
+| Component | Spec |
+|-----------|------|
+| Input | 224×224 RGB, ImageNet normalization |
+| Backbone | 4 × (Conv → BatchNorm → ReLU → MaxPool) |
+| Head | Flatten → FC(512) → Dropout(0.5) → FC(num_classes) |
+| Parameters | ~2.7 M |
+| Weights file | [`models/model_38`](models/model_38) (11 MB) |
 
-## Kaggle Notebook
-The model training and evaluation process is detailed in this [Kaggle Notebook](https://www.kaggle.com/code/halemogpa/brain-tumor-classification-pytorch-99-3-test).
+Training notebook: [`notebooks/`](notebooks/).
+
+## 📂 Project layout
+
+```
+.
+├── app.py                       # Streamlit entry point
+├── src/
+│   ├── model.py                 # CNN definition + checkpoint loader
+│   └── utils.py                 # predict, Grad-CAM, PDF report helpers
+├── models/model_38              # trained weights (committed)
+├── sample/                      # 3 sample MRIs for the "Try a sample" buttons
+├── notebooks/                   # training + evaluation notebooks
+├── .streamlit/config.toml       # dark theme + server config
+├── pyproject.toml               # canonical dependency spec (uv)
+├── requirements.txt             # auto-generated via `uv export` (Streamlit Cloud)
+├── runtime.txt                  # Python pin for Streamlit Cloud
+├── Dockerfile                   # for HF Spaces / any container host
+└── huggingface-space.md         # HF Spaces deploy guide
+```
+
+## ☁️ Deployment
+
+### Hugging Face Spaces
+
+See [huggingface-space.md](huggingface-space.md) for the full step-by-step
+using the modern `hf` CLI.
+
+### Streamlit Community Cloud
+
+1. Push the repo to GitHub.
+2. Go to <https://share.streamlit.io>, **New app**, point at `app.py`.
+3. The app reads `requirements.txt` (auto-generated from `pyproject.toml`)
+   and `.streamlit/config.toml` automatically.
+
+To regenerate `requirements.txt` after editing `pyproject.toml`:
+
+```bash
+uv export --no-hashes --no-dev --no-emit-project -o requirements.txt
+```
+
+## 📜 License
+
+[MIT](LICENSE)
+
+## 🙏 Acknowledgments
+
+- Dataset by [Masoud Nickparvar](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
+- Grad-CAM via [`pytorch-grad-cam`](https://github.com/jacobgil/pytorch-grad-cam)

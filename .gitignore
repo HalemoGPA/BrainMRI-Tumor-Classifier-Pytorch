@@ -1,2 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.streamlit/secrets.toml
 brain-mri/
-__pycache__
+.DS_Store
+.idea/
+.vscode/
+docs/.tmp/
+.playwright-mcp/
+.env

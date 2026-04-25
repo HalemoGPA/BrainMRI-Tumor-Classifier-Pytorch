@@ -36,7 +36,10 @@ class MyModel(nn.Module):
 
 def load_model(model_path, device):
     model = MyModel(num_classes=5)
-    model.load_state_dict(torch.load(model_path, map_location=device))
+    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
     model.to(device)
     model.eval()
     return model
+
+def get_gradcam_target_layer(model):
+    return model.bn4
