@@ -17,6 +17,9 @@ short_description: PyTorch CNN + Grad-CAM for brain-tumor MRI classification.
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.41-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org)
 [![uv](https://img.shields.io/badge/managed%20with-uv-261230?logo=python&logoColor=white)](https://docs.astral.sh/uv/)
+![GitHub issues](https://img.shields.io/github/issues/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=HalemoGPA/BrainMRI-Tumor-Classifier-Pytorch)
 
 A polished, portfolio-grade Streamlit app that classifies brain MRI scans into
 **No Tumor**, **Pituitary**, **Glioma**, or **Meningioma** using a custom
