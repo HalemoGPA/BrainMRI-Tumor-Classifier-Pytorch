@@ -6,6 +6,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     HF_HOME=/tmp/hf_cache \
     STREAMLIT_SERVER_HEADLESS=true \
+    STREAMLIT_SERVER_ENABLE_CORS=false \
+    STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false \
+    STREAMLIT_SERVER_FILE_WATCHER_TYPE=none \
     STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -25,7 +28,9 @@ RUN uv pip install --system --no-cache . \
 
 EXPOSE 8501
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-    CMD curl --fail http://localhost:8501/_stcore/health || exit 1
-
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "app.py", \
+     "--server.port=8501", \
+     "--server.address=0.0.0.0", \
+     "--server.enableCORS=false", \
+     "--server.enableXsrfProtection=false", \
+     "--server.fileWatcherType=none"]

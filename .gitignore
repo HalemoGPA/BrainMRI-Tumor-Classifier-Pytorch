@@ -14,3 +14,4 @@ docs/.tmp/
 .env.*
 !.env.example
 .claude/
+.agents/
